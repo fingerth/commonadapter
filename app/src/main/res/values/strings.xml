@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FingerthCommonAdapter</string>
+    <string name="title_activity_pager_demo">PagerDemoActivity</string>
+</resources>
