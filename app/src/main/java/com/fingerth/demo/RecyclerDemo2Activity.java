@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fingerth.commonadapter.recycleradapter.CommonRecyclerAdapter;
+import com.fingerth.commonadapter.recycleradapter.Holder;
 
 import java.util.ArrayList;
 
@@ -35,15 +36,13 @@ public class RecyclerDemo2Activity extends AppCompatActivity {
         CommonRecyclerAdapter<String> adapter = new CommonRecyclerAdapter<String>(this, arrayList) {
 
             @Override
-            public Holder onCreate(ViewGroup parent, int viewType) {
-                View viewLayout = LayoutInflater.from(RecyclerDemo2Activity.this).inflate(android.R.layout.simple_list_item_1, parent, false);
-                return new Holder(viewLayout);
+            public int setLayoutId(int viewType) {
+                return android.R.layout.simple_list_item_1;
             }
 
             @Override
-            public void onBind(RecyclerView.ViewHolder viewHolder, int RealPosition, String data) {
-                TextView tv = viewHolder.itemView.findViewById(android.R.id.text1);
-                tv.setText(data);
+            public void onBind(Holder holder, int RealPosition, String data) {
+                holder.setText(android.R.id.text1,data);
             }
         };
         View mHeaderView = View.inflate(this, R.layout.view_header, null);

@@ -1,9 +1,11 @@
 package com.fingerth.commonadapter.recycleradapter;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -115,16 +117,16 @@ public abstract class CommonRecyclerAdapter<T> extends RecyclerView.Adapter<Recy
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,  int viewType) {
 
         if (mHeaderView != null && viewType == TYPE_HEADER) {
             return new Holder(mHeaderView);
         } else if (mFootView != null && viewType == TYPE_FOOT) {
             return new Holder(mFootView);
         } else {
-//            View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_recycle_view, parent, false);
-//            return new Holder(layout);
-            return onCreate(parent, viewType);
+            View layout = LayoutInflater.from(parent.getContext()).inflate(setLayoutId(viewType), parent, false);
+            return new Holder(layout);
+            //return onCreate(parent, viewType);
         }
     }
 
@@ -142,7 +144,7 @@ public abstract class CommonRecyclerAdapter<T> extends RecyclerView.Adapter<Recy
 
         final int pos = getRealPosition(viewHolder);
         final T data = mDatas.get(pos);
-        onBind(viewHolder, pos, data);
+        onBind((Holder) viewHolder, pos, data);
 
         if (mListener != null) {
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -194,15 +196,17 @@ public abstract class CommonRecyclerAdapter<T> extends RecyclerView.Adapter<Recy
         return TYPE_NORMAL;
     }
 
-    public abstract Holder onCreate(ViewGroup parent, final int viewType);
+    //    public abstract Holder onCreate(ViewGroup parent, final int viewType);
+    @LayoutRes
+    public abstract int setLayoutId(int viewType);
 
-    public abstract void onBind(RecyclerView.ViewHolder viewHolder, int RealPosition, T data);
+    public abstract void onBind(Holder holder, int RealPosition, T data);
 
-    public class Holder extends RecyclerView.ViewHolder {
-        public Holder(View itemView) {
-            super(itemView);
-        }
-    }
+//    public class Holder extends RecyclerView.ViewHolder {
+//        public Holder(View itemView) {
+//            super(itemView);
+//        }
+//    }
 
     public interface OnItemClickListener<T> {
         void onItemClick(int position, T data);

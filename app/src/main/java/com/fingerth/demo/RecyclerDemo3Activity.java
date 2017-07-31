@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fingerth.commonadapter.recycleradapter.CommonRecyclerAdapter;
+import com.fingerth.commonadapter.recycleradapter.Holder;
 
 import java.util.ArrayList;
 
@@ -46,30 +47,23 @@ public class RecyclerDemo3Activity extends AppCompatActivity {
             }
 
             @Override
-            public Holder onCreate(ViewGroup parent, int viewType) {
-                View viewLayout;
+            public int setLayoutId(int viewType) {
                 switch (viewType) {
                     case 0x88:
-                        viewLayout = LayoutInflater.from(RecyclerDemo3Activity.this).inflate(R.layout.view_foot, parent, false);
-                        break;
+                        return R.layout.view_foot;
                     default:
-                        viewLayout = LayoutInflater.from(RecyclerDemo3Activity.this).inflate(android.R.layout.simple_list_item_1, parent, false);
-                        break;
+                        return android.R.layout.simple_list_item_1;
                 }
-
-                return new Holder(viewLayout);
             }
 
             @Override
-            public void onBind(RecyclerView.ViewHolder viewHolder, int RealPosition, String data) {
-                switch (viewHolder.getItemViewType()) {
+            public void onBind(Holder holder, int RealPosition, String data) {
+                switch (holder.getItemViewType()) {
                     case 0x88:
-                        TextView tv1 = viewHolder.itemView.findViewById(R.id.tv);
-                        tv1.setText(data);
+                        holder.setText(R.id.tv, data);
                         break;
                     default:
-                        TextView tv = viewHolder.itemView.findViewById(android.R.id.text1);
-                        tv.setText(data);
+                        holder.setText(android.R.id.text1, data);
                         break;
                 }
 

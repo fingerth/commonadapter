@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.fingerth.commonadapter.recycleradapter.CommonRecyclerAdapter;
+import com.fingerth.commonadapter.recycleradapter.Holder;
 
 import java.util.ArrayList;
 
@@ -37,15 +34,13 @@ public class RecyclerDemoActivity extends AppCompatActivity {
         rv.setAdapter(new CommonRecyclerAdapter<String>(this, arrayList) {
 
             @Override
-            public Holder onCreate(ViewGroup parent, int viewType) {
-                View viewLayout = LayoutInflater.from(RecyclerDemoActivity.this).inflate(android.R.layout.simple_list_item_1, parent, false);
-                return new Holder(viewLayout);
+            public int setLayoutId(int viewType) {
+                return android.R.layout.simple_list_item_1;
             }
 
             @Override
-            public void onBind(RecyclerView.ViewHolder viewHolder, int RealPosition, String data) {
-                TextView tv = viewHolder.itemView.findViewById(android.R.id.text1);
-                tv.setText(data);
+            public void onBind(Holder holder, int RealPosition, String data) {
+                holder.setText(android.R.id.text1,data);
             }
         });
     }
