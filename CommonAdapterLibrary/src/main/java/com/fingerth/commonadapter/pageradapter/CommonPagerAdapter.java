@@ -48,7 +48,7 @@ public abstract class CommonPagerAdapter<T> extends PagerAdapter {
         }
         int position = pos % mDatas.size();
         PagerHolder holder = new PagerHolder(layoutInflater.inflate(mPagerLayoutId, null, false));
-        convert(holder, mDatas.get(position));
+        convert(holder,pos, mDatas.get(position));
         container.addView(holder.getView());
         return holder.getView();
     }
@@ -60,7 +60,7 @@ public abstract class CommonPagerAdapter<T> extends PagerAdapter {
         container.removeView((View) object);
     }
 
-    public abstract void convert(PagerHolder holder, T item);
+    public abstract void convert(PagerHolder holder,int position, T item);
 
 
 }
