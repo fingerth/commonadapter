@@ -30,7 +30,7 @@ public class UnlimitedPagerDemoActivity extends AppCompatActivity {
 
         UnlimitedSlidePagerAdapter<String> unlimitedSlidePagerAdapter = new UnlimitedSlidePagerAdapter<String>(this, arrayList, R.layout.pager_item_view) {
             @Override
-            public void convert(PagerHolder holder, String item) {
+            public void convert(PagerHolder holder, int position,String item) {
                 holder.setText(R.id.tv, item);
             }
         };

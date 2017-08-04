@@ -29,7 +29,7 @@ public class PagerDemoActivity extends AppCompatActivity {
 
         vp.setAdapter(new CommonPagerAdapter<String>(this, arrayList, R.layout.pager_item_view) {
             @Override
-            public void convert(PagerHolder holder, String item) {
+            public void convert(PagerHolder holder,int posiong, String item) {
                 holder.setText(R.id.tv, item);
             }
         });
