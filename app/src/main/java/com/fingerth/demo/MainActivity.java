@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        final ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
         list.add("ViewPager Demo");
         list.add("Unlimited ViewPager Demo(無限滑動)");
         list.add("RecyclerView Demo");
@@ -34,10 +34,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         lv.setAdapter(new CommonAdapter<String>(this, list, android.R.layout.simple_list_item_1) {
             @Override
-            public void convert(ViewHolder helper, String item) {
+            public void convert(ViewHolder helper,int position, String item) {
                 helper.setText(android.R.id.text1, item);
             }
         });
+
         lv.setOnItemClickListener(this);
 
 

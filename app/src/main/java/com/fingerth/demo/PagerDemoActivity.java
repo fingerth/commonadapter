@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.fingerth.commonadapter.pageradapter.CommonPagerAdapter;
 import com.fingerth.commonadapter.pageradapter.PagerHolder;
-import com.fingerth.commonadapter.pageradapter.unlimited.UnlimitedSlidePagerAdapter;
 
 import java.util.ArrayList;
 

@@ -25,7 +25,6 @@ public abstract class CommonRecyclerAdapter<T> extends RecyclerView.Adapter<Recy
     public static final int TYPE_NORMAL = 0x11;
     public static final int TYPE_FOOT = 0x22;
 
-
     private Context context;
     private ArrayList<T> mDatas = new ArrayList<>();
 

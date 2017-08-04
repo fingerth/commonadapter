@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fingerth.commonadapter.recycleradapter.CommonRecyclerAdapter;
 import com.fingerth.commonadapter.recycleradapter.Holder;
@@ -42,14 +43,13 @@ public class RecyclerDemo2Activity extends AppCompatActivity {
 
             @Override
             public void onBind(Holder holder, int RealPosition, String data) {
-                holder.setText(android.R.id.text1,data);
+                holder.setText(android.R.id.text1, data);
             }
         };
         View mHeaderView = View.inflate(this, R.layout.view_header, null);
         adapter.setHeaderView(mHeaderView);
         View mFootView = View.inflate(this, R.layout.view_foot, null);
         adapter.setFootView(mFootView);
-
 
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         rv.setLayoutManager(manager);

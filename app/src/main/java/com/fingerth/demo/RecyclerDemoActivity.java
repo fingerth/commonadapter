@@ -40,7 +40,7 @@ public class RecyclerDemoActivity extends AppCompatActivity {
 
             @Override
             public void onBind(Holder holder, int RealPosition, String data) {
-                holder.setText(android.R.id.text1,data);
+                holder.setText(android.R.id.text1, data);
             }
         });
     }
