@@ -22,7 +22,7 @@ allprojects {
 	
 ```
 dependencies {
-	        compile 'com.github.fingerth:FingerthCommonAdapter:1.0.1'
+	        compile 'com.github.fingerth:FingerthCommonAdapter:1.0.2'
 	}
 ```
 
@@ -37,8 +37,8 @@ dependencies {
         
         lv.setAdapter(new CommonAdapter<String>(this, list, android.R.layout.simple_list_item_1) {
             @Override
-            public void convert(ViewHolder helper, String item) {
-                helper.setText(android.R.id.text1, item);
+            public void convert(ViewHolder helper,int position, String item) {
+                helper.setText(android.R.id.text1, item);
             }
         });
 ```
