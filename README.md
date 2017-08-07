@@ -22,7 +22,7 @@ allprojects {
 	
 ```
 dependencies {
-	        compile 'com.github.fingerth:FingerthCommonAdapter:1.1.0'
+		compile 'com.github.fingerth:commonadapter:1.1.0'
 	}
 ```
 
