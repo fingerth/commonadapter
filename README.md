@@ -22,9 +22,11 @@ allprojects {
 	
 ```
 dependencies {
-	        compile 'com.github.fingerth:FingerthCommonAdapter:1.0.2'
+		compile 'com.github.fingerth:commonadapter:1.1.0'
 	}
 ```
+
+[![](https://jitpack.io/v/fingerth/commonadapter.svg)](https://jitpack.io/#fingerth/commonadapter)
 
 
 ### CommonAdapter<T> 一个简单的ListView和GrideView的适配器
