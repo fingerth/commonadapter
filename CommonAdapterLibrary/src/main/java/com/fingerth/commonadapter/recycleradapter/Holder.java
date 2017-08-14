@@ -1,19 +1,12 @@
 package com.fingerth.commonadapter.recycleradapter;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.FloatRange;
 import android.support.annotation.IdRes;
 import android.support.annotation.IntDef;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.fingerth.commonadapter.R;
 
 /**
  * ======================================================
@@ -67,132 +60,5 @@ public class Holder extends RecyclerView.ViewHolder {
     public void setImageBitmap(@IdRes int viewId, Bitmap bm) {
         ImageView view = getView(viewId);
         view.setImageBitmap(bm);
-    }
-
-    /**
-     * 为ImageView设置图片
-     *
-     * @param viewId
-     * @param url
-     * @return
-     */
-    public void setImageByUrl(@IdRes int viewId, String url) {
-        Glide.with(itemView.getContext())
-                .load(url)
-                .thumbnail(0.3f)
-                .into((ImageView) getView(viewId));
-    }
-
-    /**
-     * 有默認的加載圖片
-     */
-    public void setImageByUrlDefaultPlaceholder(@IdRes int viewId, String url) {
-        Glide.with(itemView.getContext())
-                .load(url)
-                .placeholder(R.drawable.loading_spinner)
-                .error(R.drawable.loading_spinner)
-                .thumbnail(0.3f)
-                .into((ImageView) getView(viewId));
-    }
-
-    public void setImageByUrl(@IdRes int viewId, String url,
-                              @DrawableRes int placeholderRes, @DrawableRes int errorRes,
-                              @FloatRange(from = 0.0f, to = 1.0f) float thumbnail,
-                              @ImgScaleType int scaleType,
-                              DiskCacheStrategy diskCacheStrategy) {
-        switch (scaleType) {
-            case TYPE_NULL:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_FITCENTER:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_CENTERCROP:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .centerCrop()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_GIF:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .asGif()
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-
-        }
-
-    }
-
-    public void setImageByUrl(@IdRes int viewId, String url,
-                              Drawable placeholderRes, Drawable errorRes,
-                              @FloatRange(from = 0.0f, to = 1.0f) float thumbnail,
-                              @ImgScaleType int scaleType,
-                              DiskCacheStrategy diskCacheStrategy) {
-        switch (scaleType) {
-            case TYPE_NULL:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_FITCENTER:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_CENTERCROP:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .centerCrop()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_GIF:
-                Glide.with(itemView.getContext())
-                        .load(url)
-                        .asGif()
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-
-        }
     }
 }

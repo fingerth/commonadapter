@@ -20,7 +20,7 @@ public abstract class CommonPagerAdapter<T> extends PagerAdapter {
     private static final String TAG = CommonPagerAdapter.class.getSimpleName();
     private LayoutInflater layoutInflater;
     public Context context;
-    protected List<T> mDatas;
+    public List<T> mDatas;
     private final int mPagerLayoutId;
 
     public CommonPagerAdapter(Context context, List<T> mDatas, int mPagerLayoutId) {

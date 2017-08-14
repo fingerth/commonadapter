@@ -2,9 +2,6 @@ package com.fingerth.commonadapter.baseadapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.FloatRange;
 import android.support.annotation.IdRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
@@ -15,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fingerth.commonadapter.R;
 
 /**
@@ -103,138 +98,6 @@ public class ViewHolder {
     public ViewHolder setImageBitmap(@IdRes int viewId, Bitmap bm) {
         ImageView view = getView(viewId);
         view.setImageBitmap(bm);
-        return this;
-    }
-
-    /**
-     * 为ImageView设置图片
-     *
-     * @param viewId
-     * @param url
-     * @return
-     */
-    public ViewHolder setImageByUrl(@IdRes int viewId, String url) {
-        Glide.with(mConvertView.getContext())
-                .load(url)
-                .thumbnail(0.3f)
-                .into((ImageView) getView(viewId));
-        return this;
-    }
-
-    /**
-     * 有默認的加載圖片
-     */
-    public ViewHolder setImageByUrlDefaultPlaceholder(@IdRes int viewId, String url) {
-        Glide.with(mConvertView.getContext())
-                .load(url)
-                .placeholder(R.drawable.loading_spinner)
-                .error(R.drawable.loading_spinner)
-                .thumbnail(0.3f)
-                .into((ImageView) getView(viewId));
-        return this;
-    }
-
-    public ViewHolder setImageByUrl(@IdRes int viewId, String url,
-                                    @DrawableRes int placeholderRes, @DrawableRes int errorRes,
-                                    @FloatRange(from = 0.0f, to = 1.0f) float thumbnail,
-                                    @ImgScaleType int scaleType,
-                                    DiskCacheStrategy diskCacheStrategy) {
-        switch (scaleType) {
-            case TYPE_NULL:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_FITCENTER:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_CENTERCROP:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .centerCrop()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_GIF:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .asGif()
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-
-        }
-
-        return this;
-    }
-
-    public ViewHolder setImageByUrl(@IdRes int viewId, String url,
-                                    Drawable placeholderRes, Drawable errorRes,
-                                    @FloatRange(from = 0.0f, to = 1.0f) float thumbnail,
-                                    @ImgScaleType int scaleType,
-                                    DiskCacheStrategy diskCacheStrategy) {
-        switch (scaleType) {
-            case TYPE_NULL:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_FITCENTER:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_CENTERCROP:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .centerCrop()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-            case TYPE_GIF:
-                Glide.with(mConvertView.getContext())
-                        .load(url)
-                        .asGif()
-                        .placeholder(placeholderRes)
-                        .error(errorRes)
-                        .diskCacheStrategy(diskCacheStrategy)
-                        .fitCenter()
-                        .thumbnail(thumbnail)
-                        .into((ImageView) getView(viewId));
-                break;
-
-        }
-
         return this;
     }
 
