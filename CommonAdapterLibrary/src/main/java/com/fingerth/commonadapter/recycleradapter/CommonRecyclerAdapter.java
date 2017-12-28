@@ -75,7 +75,7 @@ public abstract class CommonRecyclerAdapter<T> extends RecyclerView.Adapter<Recy
     /**
      * 數據刷新
      */
-    public void addDatas(ArrayList<T> datas) {
+    public void addDatas(List<T> datas) {
         mDatas = datas;
         notifyDataSetChanged();
     }
